@@ -1,0 +1,16 @@
+<div class="links">
+    <a href="/dashy">Dashboard</a> | <a href="/">Logout</a>
+</div>
+@model Wedding
+<h1>@ViewBag.ThisWedding.WedderOne & @ViewBag.ThisWedding.WedderTwo's Wedding</h1>
+<h3>Date: @ViewBag.Date.ToString("MMMM dd, yyyy")</h3>
+<h3>Guests</h3>
+<ul>
+    <!-- foreach from guestlist -->
+    @{
+        @foreach(var guest in @ViewBag.GuestList)
+        {
+            <li><p>@guest.User.FirstName @guest.User.LastName</p></li>
+        }
+    }
+</ul> 

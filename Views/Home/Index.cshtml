@@ -1,0 +1,24 @@
+﻿<h1>Wedding Crasher</h1>
+@model UserValidator
+<h3>Login Here!</h3>
+<form action="login" method="post">
+    <label>Email:</label><span>@ViewBag.LoginError</span><br>
+    <input type="text" name="LogEmail"><br>
+    <label>Password:</label><span></span><br>
+    <input type="password" name="LogPass"><br>
+    <input type="submit" value="Login">
+</form>
+<h3>Register Here!</h3>
+<form action="register" method="post">
+    <label>First Name:</label><span asp-validation-for="FirstName"></span><br>
+    <input type="text" asp-for="FirstName"><br>
+    <label>Last Name:</label><span asp-validation-for="LastName"></span><br>
+    <input type="text" asp-for="LastName"><br>
+    <label>Email Address:</label><span asp-validation-for="Email">@ViewBag.EmailTaken</span><br>
+    <input type="text" asp-for="Email"><br>
+    <label>Password:</label><span asp-validation-for="Password"></span><br>
+    <input type="password" asp-for="Password"><br>
+    <label>Confirm Password:</label><span asp-validation-for="PasswordConfirm"></span><br>
+    <input type="password" asp-for="PasswordConfirm"><br>
+    <input type="submit" value="Register">
+</form>

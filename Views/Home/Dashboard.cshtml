@@ -1,0 +1,46 @@
+<h1>Welcome to Wedding Crasher!</h1>
+<a href="/">Logout</a><br><br>
+<a href="new"><button class="btn-primary">Plan a Wedding</button></a>
+<hr>
+<table class="table table-dark">
+    <thead>
+        <th>Wedding</th>
+        <th>Date</th>
+        <th>Guests</th>
+        <th>Action</th>
+    </thead>
+<!-- foreach -->
+@{
+    <!-- int CurrentUserId = @ViewBag.CurrentUser; -->
+    foreach(var wed in @ViewBag.Weddings)
+    {
+        bool IsGuest = false;
+        <tr>
+            <td><a href="/wedding/@wed.WeddingId">@wed.WedderOne & @wed.WedderTwo</a></td>
+            <td>@wed.WeddingDate.ToString("MMMM dd, yyyy")</td>
+            <td>@wed.Guests.Count</td>
+            <td>
+                @if(@wed.UserId == @ViewBag.CurrentUser)
+                {
+                    <a href="delete/@wed.WeddingId">Delete</a>
+                    continue;
+                }
+                @foreach(var guest in @wed.Guests)
+                {
+                    @if(@guest.User.UserId == @ViewBag.CurrentUser)
+                    {
+                        IsGuest = true;
+                    }
+                }
+                @if(IsGuest == true)
+                {
+                    <a href="/unrsvp/@ViewBag.CurrentUser/@wed.WeddingId">un-RSVP</a>
+                }else{
+                    <a href="/rsvp/@ViewBag.CurrentUser/@wed.WeddingId">RSVP</a>
+                }
+            </td>
+        </tr>
+    }
+}
+<!-- end foreach -->
+</table>

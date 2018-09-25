@@ -1,0 +1,18 @@
+@model Wedding
+<div class="links">
+    <a href="dashy">Dashboard</a> | <a href="/">Logout</a>
+</div>
+<h1>Plan a Wedding</h1>
+<form action="MakeWedding" method="post">
+    <input type="hidden" value="@ViewBag.CurrentUser" asp-for="UserId">
+    <label>To Be Wed 1</label><br>
+    <input type="text" asp-for="WedderOne"><br>
+    <label>To Be Wed 2</label><br>
+    <input type="text" asp-for="WedderTwo"><br>
+    @ViewBag.TimeTravel<br>
+    <label>Date</label><br>
+    <input type="date" asp-for="WeddingDate"><br>
+    <label>Wedding Address</label><br>
+    <input type="text" asp-for="WeddingAddress"><br>
+    <input type="submit" value="Create">
+</form>
